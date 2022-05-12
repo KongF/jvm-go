@@ -1,5 +1,11 @@
 package classfile
 
+/*
+java 虚拟机规范给出的常量结构
+cp_info{
+	u1 tag;
+	u1 info[];
+}*/
 const (
 	CONSTANT_Class              = 7
 	CONSTANT_Fieldref           = 9
