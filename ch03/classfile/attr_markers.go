@@ -1,9 +1,9 @@
 package classfile
 
-type DeprecateAttribute struct {
+type DeprecatedAttribute struct {
 	MarkerAttribute
 }
-type SynthericAttribute struct {
+type SyntheticAttribute struct {
 	MarkerAttribute
 }
 type MarkerAttribute struct {

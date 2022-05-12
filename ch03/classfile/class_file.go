@@ -1,9 +1,6 @@
 package classfile
 
-import (
-	"fmt"
-	"go/types"
-)
+import "fmt"
 
 type ClassFile struct {
 	magic        uint32
