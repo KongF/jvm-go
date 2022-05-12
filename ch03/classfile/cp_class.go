@@ -5,13 +5,13 @@ package classfile
 	u2 name_index;
 }*/
 type ConstantClassInfo struct {
-	cp       ConstantPool
-	nameIdex uint16
+	cp        ConstantPool
+	nameIndex uint16
 }
 
 func (self *ConstantClassInfo) readInfo(reader *ClassReader) {
-	self.nameIdex = reader.readUint16()
+	self.nameIndex = reader.readUint16()
 }
 func (self *ConstantClassInfo) Name() string {
-	return self.cp.getUtf8(self.nameIdex)
+	return self.cp.getUtf8(self.nameIndex)
 }
