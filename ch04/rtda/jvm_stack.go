@@ -1,9 +1,9 @@
 package rtda
 
 type Stack struct {
-	maxSize		uint
-	size  		uint
-	_top 		*Frame
+	maxSize uint
+	size    uint
+	_top    *Frame
 }
 
 func newStack(maxSize uint) *Stack {
@@ -25,7 +25,7 @@ func (self *Stack) pop() *Frame {
 	if self._top == nil {
 		panic("jvm stack is empty!")
 	}
-	top : = self._top
+	top := self._top
 	self._top = top.lower
 	top.lower = nil
 	self.size--
