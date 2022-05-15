@@ -6,6 +6,9 @@ import "jvm-go/ch05/rtda"
 // Boolean XOR int
 type IXOR struct{ base.NoOperandsInstruction }
 
+// Boolean XOR long
+type LXOR struct{ base.NoOperandsInstruction }
+
 func (self *IXOR) Execute(frame *rtda.Frame) {
 	stack := frame.OperandStack()
 	v1 := stack.PopInt()
@@ -13,10 +16,6 @@ func (self *IXOR) Execute(frame *rtda.Frame) {
 	result := v1 ^ v2
 	stack.PushInt(result)
 }
-
-// Boolean XOR long
-type LXOR struct{ base.NoOperandsInstruction }
-
 func (self *LXOR) Execute(frame *rtda.Frame) {
 	stack := frame.OperandStack()
 	v1 := stack.PopLong()

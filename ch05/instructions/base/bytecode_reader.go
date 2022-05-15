@@ -9,6 +9,9 @@ func (self *BytecodeReader) Reset(code []byte, pc int) {
 	self.code = code
 	self.pc = pc
 }
+func (self *BytecodeReader) PC() int {
+	return self.pc
+}
 func (self *BytecodeReader) ReadUint8() uint8 {
 	i := self.code[self.pc]
 	self.pc++
