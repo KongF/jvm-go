@@ -4,22 +4,22 @@ import "jvm-go/ch05/instructions/base"
 import "jvm-go/ch05/rtda"
 
 type DUP struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type DUP_X1 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type DUP_X2 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type DUP2 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type DUP2_X1 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type DUP2_X2 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func (self *DUP) Execute(frame *rtda.Frame) {

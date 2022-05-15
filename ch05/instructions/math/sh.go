@@ -5,26 +5,26 @@ import "jvm-go/ch05/rtda"
 
 //int 左移
 type ISHL struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 // int 算术右位移
 type ISHR struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 // 逻辑右位移
 type IUSHR struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type LSHL struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type LSHR struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type LUSHR struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func (self *ISHL) Execute(frame *rtda.Frame) {

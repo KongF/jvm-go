@@ -4,10 +4,10 @@ import "jvm-go/ch05/instructions/base"
 import "jvm-go/ch05/rtda"
 
 type IAND struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type LAND struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func (self *IAND) Execute(frame *rtda.Frame) {

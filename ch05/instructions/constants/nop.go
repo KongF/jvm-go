@@ -4,7 +4,7 @@ import "jvm-go/ch05/instructions/base"
 import "jvm-go/ch05/rtda"
 
 type NOP struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func (self *NOP) Execute(frame *rtda.Frame) {

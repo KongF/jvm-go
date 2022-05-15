@@ -4,10 +4,10 @@ import "jvm-go/ch05/instructions/base"
 import "jvm-go/ch05/rtda"
 
 type FCMPG struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type FCMPL struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func _fcmp(frame rtda.Frame, gFlag bool) {

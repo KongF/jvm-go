@@ -5,16 +5,16 @@ import "jvm-go/ch05/instructions/base"
 import "jvm-go/ch05/rtda"
 
 type DREM struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type FREM struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type IREM struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type LREM struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func (self *IREM) Execute(frame *rtda.Frame) {

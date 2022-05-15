@@ -6,7 +6,7 @@ type Instruction interface {
 	FetchOperands(reader *BytecodeReader)
 	Execute(frame *rtda.Frame)
 }
-type NoOperandsInsruction struct {
+type NoOperandsInstruction struct {
 }
 
 //跳转指令
@@ -20,7 +20,7 @@ type Index16Instruction struct {
 	Index uint
 }
 
-func (self *NoOperandsInsruction) FetchOperands(reader *BytecodeReader) {
+func (self *NoOperandsInstruction) FetchOperands(reader *BytecodeReader) {
 	// nothing to do 表示没有操作数指令
 }
 func (self *BranchInstruction) FetchOperands(reader *BytecodeReader) {

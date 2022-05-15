@@ -4,10 +4,10 @@ import "jvm-go/ch05/instructions/base"
 import "jvm-go/ch05/rtda"
 
 type DCMPG struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type DCMPL struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func _dcmp(frame *rtda.Frame, gFlag bool) {

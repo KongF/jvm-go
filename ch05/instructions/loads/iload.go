@@ -7,16 +7,16 @@ type ILOAD struct {
 	base.Index8Instruction
 }
 type ILOAD_0 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type ILOAD_1 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type ILOAD_2 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type ILOAD_3 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func _iload(frame *rtda.Frame, index uint) {

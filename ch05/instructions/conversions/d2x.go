@@ -4,13 +4,13 @@ import "jvm-go/ch05/instructions/base"
 import "jvm-go/ch05/rtda"
 
 type D2F struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type D2I struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type D2L struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func (self *D2I) Execute(frame *rtda.Frame) {

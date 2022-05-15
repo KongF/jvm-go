@@ -4,10 +4,10 @@ import "jvm-go/ch05/instructions/base"
 import "jvm-go/ch05/rtda"
 
 type POP struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type POP2 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func (self *POP) Execute(frame *rtda.Frame) {

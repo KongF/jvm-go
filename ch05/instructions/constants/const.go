@@ -4,49 +4,49 @@ import "jvm-go/ch05/instructions/base"
 import "jvm-go/ch05/rtda"
 
 type ACONST_NULL struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type DCONST_0 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type DCONST_1 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type FCONST_0 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type FCONST_1 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type FCONST_2 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type ICONST_M1 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type ICONST_0 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type ICONST_1 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type ICONST_2 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type ICONST_3 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type ICONST_4 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type ICONST_5 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type LCONST_0 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type LCONST_1 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func (self *ACONST_NULL) Execute(frame *rtda.Frame) {

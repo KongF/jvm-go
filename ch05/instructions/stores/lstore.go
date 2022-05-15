@@ -7,16 +7,16 @@ type LSTORE struct {
 	base.Index8Instruction
 }
 type LSTORE_0 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type LSTORE_1 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type LSTORE_2 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 type LSTORE_3 struct {
-	base.NoOperandsInsruction
+	base.NoOperandsInstruction
 }
 
 func _lstore(frame *rtda.Frame, index uint) {
