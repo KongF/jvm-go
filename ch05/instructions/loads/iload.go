@@ -3,6 +3,7 @@ package loads
 import "jvm-go/ch05/instructions/base"
 import "jvm-go/ch05/rtda"
 
+//ILOAD
 type ILOAD struct {
 	base.Index8Instruction
 }
