@@ -28,24 +28,31 @@ func (self *WIDE) FetchOperands(reader *base.BytecodeReader) {
 		inst.Index = uint(reader.ReadUint16())
 		self.modifiedInstruction = inst
 	case 0x18: //dload
+		inst := &loads.DLOAD{}
 		inst.Index = uint(reader.ReadUint16())
 		self.modifiedInstruction = inst
 	case 0x19: //aload
+		inst := &loads.ALOAD{}
 		inst.Index = uint(reader.ReadUint16())
 		self.modifiedInstruction = inst
 	case 0x36: //istore
+		inst := &stores.ISTORE{}
 		inst.Index = uint(reader.ReadUint16())
 		self.modifiedInstruction = inst
 	case 0x37: //lstore
+		inst := &stores.LSTORE{}
 		inst.Index = uint(reader.ReadUint16())
 		self.modifiedInstruction = inst
 	case 0x38: //fstore
+		inst := &stores.FSTORE{}
 		inst.Index = uint(reader.ReadUint16())
 		self.modifiedInstruction = inst
 	case 0x39: //dstore
+		inst := &stores.DSTORE{}
 		inst.Index = uint(reader.ReadUint16())
 		self.modifiedInstruction = inst
 	case 0x3a: //astore
+		inst := &stores.ASTORE{}
 		inst.Index = uint(reader.ReadUint16())
 		self.modifiedInstruction = inst
 	case 0x84: //iinc
