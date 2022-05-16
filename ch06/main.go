@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"jvm-go/ch05/classfile"
-	"jvm-go/ch05/classpath"
+	"jvm-go/ch06/classfile"
+	"jvm-go/ch06/classpath"
 	"strings"
 )
-import "jvm-go/ch04/rtda"
+import "jvm-go/ch06/rtda"
 
 func main() {
 	cmd := parseCmd()

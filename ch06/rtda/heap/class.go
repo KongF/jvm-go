@@ -1,8 +1,7 @@
 package heap
 
 import (
-	"jvm-go/ch05/classfile"
-	. "jvm-go/ch06/classfile"
+	"jvm-go/ch06/classfile"
 )
 
 type Class struct {
@@ -32,6 +31,7 @@ func newClass(cf *classfile.ClassFile) *Class {
 	class.methods = newMethods(class, cf.Methods())
 	return class
 }
+
 func (self *Class) IsPublic() bool {
 	return 0 != self.accessFlags&ACC_PUBLIC
 }

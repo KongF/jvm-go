@@ -2,7 +2,7 @@ package heap
 
 import (
 	"fmt"
-	"jvm-go/ch05/classfile"
+	"jvm-go/ch06/classfile"
 )
 
 type Constant interface{}

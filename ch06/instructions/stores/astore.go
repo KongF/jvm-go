@@ -1,7 +1,7 @@
 package stores
 
-import "jvm-go/ch05/instructions/base"
-import "jvm-go/ch05/rtda"
+import "jvm-go/ch06/instructions/base"
+import "jvm-go/ch06/rtda"
 
 // Store reference into local variable
 type ASTORE struct{ base.Index8Instruction }

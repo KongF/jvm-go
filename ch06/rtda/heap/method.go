@@ -1,6 +1,6 @@
 package heap
 
-import "jvm-go/ch05/classfile"
+import "jvm-go/ch06/classfile"
 
 type Method struct {
 	ClassMember

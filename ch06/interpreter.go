@@ -1,10 +1,10 @@
 package main
 
 import "fmt"
-import "jvm-go/ch05/classfile"
-import "jvm-go/ch05/instructions"
-import "jvm-go/ch05/instructions/base"
-import "jvm-go/ch05/rtda"
+import "jvm-go/ch06/classfile"
+import "jvm-go/ch06/instructions"
+import "jvm-go/ch06/instructions/base"
+import "jvm-go/ch06/rtda"
 
 func interpret(methodInfo *classfile.MemberInfo) {
 	codeArr := methodInfo.CodeAttribute()

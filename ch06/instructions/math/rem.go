@@ -1,8 +1,8 @@
 package math
 
 import "math"
-import "jvm-go/ch05/instructions/base"
-import "jvm-go/ch05/rtda"
+import "jvm-go/ch06/instructions/base"
+import "jvm-go/ch06/rtda"
 
 type DREM struct {
 	base.NoOperandsInstruction
