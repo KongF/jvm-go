@@ -33,6 +33,21 @@ func newConstantPool(class *Class, cfCp classfile.ConstantPool) *ConstantPool {
 			doubleInfo := cpInfo.(*classfile.ConstantDoubleInfo)
 			consts[i] = doubleInfo.Value()
 			i++
+		case *classfile.ConstantStringInfo:
+			stringInfo := cpInfo.(*classfile.ConstantStringInfo)
+			consts[i] = stringInfo.String()
+		case *classfile.ConstantClassInfo:
+			classInfo := cpInfo.(*classfile.ConstantClassInfo)
+			consts[i] = newClassRef(rtCp, classInfo)
+		case *classfile.ConstantFieldrefInfo:
+			fieldInfo := cpInfo.(*classfile.ConstantFieldrefInfo)
+			consts[i] = newFieldRef(rtCp, fieldInfo)
+		case *classfile.ConstantMethodrefInfo:
+			methodrefInfo := cpInfo.(*classfile.ConstantMethodrefInfo)
+			consts[i] = newMethodRef(rtCp, methodrefInfo)
+		case *classfile.ConstantInterfaceMethodrefInfo:
+			methodrefInfo := cpInfo.(*classfile.ConstantInterfaceMethodrefInfo)
+			consts[i] = newInterfaceMethodRef(rtCp, methodrefInfo)
 		}
 	}
 	return rtCp
