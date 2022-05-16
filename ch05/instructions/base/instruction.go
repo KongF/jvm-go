@@ -24,7 +24,7 @@ func (self *NoOperandsInstruction) FetchOperands(reader *BytecodeReader) {
 	// nothing to do 表示没有操作数指令
 }
 func (self *BranchInstruction) FetchOperands(reader *BytecodeReader) {
-	self.Offset = int(reader.ReadUint16())
+	self.Offset = int(reader.ReadInt16())
 }
 
 func (self *Index8Instruction) FetchOperands(reader *BytecodeReader) {

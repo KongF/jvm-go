@@ -46,6 +46,6 @@ func (self *BytecodeReader) ReadInt32s(n int32) []int32 {
 //内对齐，保证defaultOffset在字节码的地址是4的倍数
 func (self *BytecodeReader) SkipPadding() {
 	for self.pc%4 != 0 {
-		self.ReadInt8()
+		self.ReadUint8()
 	}
 }
