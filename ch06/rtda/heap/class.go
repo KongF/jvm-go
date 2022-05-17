@@ -18,7 +18,7 @@ type Class struct {
 	interfaces        []*Class
 	instanceSlotCount uint
 	staticSlotCount   uint
-	staticVars        *Slots
+	staticVars        Slots
 }
 
 func newClass(cf *classfile.ClassFile) *Class {
@@ -67,4 +67,19 @@ func (self *Class) getPackageName() string {
 		return self.name[:i]
 	}
 	return ""
+}
+
+func (self *Class) isSubClassOf(c *Class) bool {
+	return self.superClass == c
+}
+
+func (self *Class) NewObject() *Object {
+	return newObject(self)
+}
+
+func (self *Class) ConstantPool() *ConstantPool {
+	return self.constantPool
+}
+func (self *Class) StaticVars() Slots {
+	return self.staticVars
 }

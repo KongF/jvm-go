@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"jvm-go/ch06/classfile"
 	"jvm-go/ch06/classpath"
-	"path/filepath"
 )
 
 type ClassLoader struct {
@@ -39,7 +38,9 @@ func link(class *Class) {
 }
 
 func prepare(class *Class) {
-	//todo
+	calcInstanceFieldSlotIds(class)
+	calcStaticFieldSlotIds(class)
+	allocAndInitStaticVars(class)
 }
 
 func verify(class *Class) {
@@ -86,11 +87,6 @@ func parseClass(data []byte) *Class {
 	}
 	return newClass(cf)
 }
-func prepare(class *Class) {
-	calcInstanceFieldSlotIds(class)
-	calcStaticFieldSlotIds(class)
-	allocAndInitStaticVars(class)
-}
 
 func allocAndInitStaticVars(class *Class) {
 	class.staticVars = newSlots(class.staticSlotCount)
@@ -104,8 +100,8 @@ func allocAndInitStaticVars(class *Class) {
 func initStaticFinalVar(class *Class, field *Field) {
 	vars := class.staticVars
 	cp := class.constantPool
-	cpIndex := field.CostValueIndex()
-	slotId := field.slotId()
+	cpIndex := field.ConstValueIndex()
+	slotId := field.SlotId()
 	if cpIndex > 0 {
 		switch field.Descriptor() {
 		case "Z", "E", "C", "S", "I":

@@ -27,3 +27,9 @@ func (self *Field) copyAttributes(field *classfile.MemberInfo) {
 		self.constValueIndex = uint(valAttr.ConstantValueIndex())
 	}
 }
+func (self *Field) ConstValueIndex() uint {
+	return self.constValueIndex
+}
+func (self *Field) SlotId() uint {
+	return self.slotId
+}
