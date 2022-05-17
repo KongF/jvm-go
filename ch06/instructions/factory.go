@@ -1,6 +1,9 @@
 package instructions
 
-import "fmt"
+import (
+	"fmt"
+	"jvm-go/ch06/instructions/constants"
+)
 import "jvm-go/ch05/instructions/base"
 import . "jvm-go/ch05/instructions/comparisons"
 import . "jvm-go/ch05/instructions/constants"
@@ -201,12 +204,12 @@ func NewInstruction(opcode byte) base.Instruction {
 		return &BIPUSH{}
 	case 0x11:
 		return &SIPUSH{}
-	// case 0x12:
-	// 	return &LDC{}
-	// case 0x13:
-	// 	return &LDC_W{}
-	// case 0x14:
-	// 	return &LDC2_W{}
+	case 0x12:
+		return &LDC{}
+	case 0x13:
+		return &LDC_W{}
+	case 0x14:
+		return &LDC2_W{}
 	case 0x15:
 		return &ILOAD{}
 	case 0x16:
