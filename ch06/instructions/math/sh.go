@@ -1,7 +1,7 @@
 package math
 
-import "jvm-go/ch05/instructions/base"
-import "jvm-go/ch05/rtda"
+import "jvm-go/ch06/instructions/base"
+import "jvm-go/ch06/rtda"
 
 //int 左移
 type ISHL struct {

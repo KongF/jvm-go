@@ -1,8 +1,8 @@
 package loads
 
 import (
-	"jvm-go/ch05/instructions/base"
-	"jvm-go/ch05/rtda"
+	"jvm-go/ch06/instructions/base"
+	"jvm-go/ch06/rtda"
 )
 
 type ALOAD struct {

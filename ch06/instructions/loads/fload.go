@@ -1,7 +1,7 @@
 package loads
 
-import "jvm-go/ch05/instructions/base"
-import "jvm-go/ch05/rtda"
+import "jvm-go/ch06/instructions/base"
+import "jvm-go/ch06/rtda"
 
 type FLOAD struct{ base.Index8Instruction }
 type FLOAD_0 struct{ base.NoOperandsInstruction }
