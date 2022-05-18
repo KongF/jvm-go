@@ -19,6 +19,7 @@ type Class struct {
 	instanceSlotCount uint
 	staticSlotCount   uint
 	staticVars        Slots
+	initStarted       bool
 }
 
 func newClass(cf *classfile.ClassFile) *Class {
@@ -39,7 +40,7 @@ func (self *Class) IsPublic() bool {
 func (self *Class) IsFinal() bool {
 	return 0 != self.accessFlags&ACC_FINAL
 }
-func (self *Class) IsSupper() bool {
+func (self *Class) IsSuper() bool {
 	return 0 != self.accessFlags&ACC_SUPER
 }
 func (self *Class) IsInterface() bool {
@@ -59,10 +60,10 @@ func (self *Class) IsEnum() bool {
 }
 
 func (self *Class) isAccessibleTo(other *Class) bool {
-	return self.IsPublic() || self.getPackageName() == other.getPackageName()
+	return self.IsPublic() || self.GetPackageName() == other.GetPackageName()
 }
 
-func (self *Class) getPackageName() string {
+func (self *Class) GetPackageName() string {
 	if i := strings.LastIndex(self.name, "/"); i >= 0 {
 		return self.name[:i]
 	}
@@ -71,13 +72,6 @@ func (self *Class) getPackageName() string {
 
 func (self *Class) NewObject() *Object {
 	return newObject(self)
-}
-
-func (self *Class) ConstantPool() *ConstantPool {
-	return self.constantPool
-}
-func (self *Class) StaticVars() Slots {
-	return self.staticVars
 }
 func (self *Class) GetMainMethod() *Method {
 	return self.getStaticMethod("main", "([Ljava/lang/String;)V")
@@ -93,4 +87,31 @@ func (self *Class) getStaticMethod(name, descriptor string) *Method {
 		}
 	}
 	return nil
+}
+
+// getters
+func (self *Class) Name() string {
+	return self.name
+}
+func (self *Class) ConstantPool() *ConstantPool {
+	return self.constantPool
+}
+func (self *Class) Fields() []*Field {
+	return self.fields
+}
+func (self *Class) Methods() []*Method {
+	return self.methods
+}
+func (self *Class) SuperClass() *Class {
+	return self.superClass
+}
+func (self *Class) StaticVars() Slots {
+	return self.staticVars
+}
+func (self *Class) InitStarted() bool {
+	return self.initStarted
+}
+
+func (self *Class) StartInit() {
+	self.initStarted = true
 }
