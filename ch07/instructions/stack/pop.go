@@ -1,7 +1,7 @@
 package stack
 
-import "jvm-go/ch06/instructions/base"
-import "jvm-go/ch06/rtda"
+import "jvm-go/ch07//instructions/base"
+import "jvm-go/ch07//rtda"
 
 type POP struct {
 	base.NoOperandsInstruction

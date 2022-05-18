@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"jvm-go/ch06/rtda/heap"
+	"jvm-go/ch07//rtda/heap"
 )
-import "jvm-go/ch06/instructions"
-import "jvm-go/ch06/instructions/base"
-import "jvm-go/ch06/rtda"
+import "jvm-go/ch07//instructions"
+import "jvm-go/ch07//instructions/base"
+import "jvm-go/ch07//rtda"
 
 func interpret(method *heap.Method) {
 	thread := rtda.NewThread()

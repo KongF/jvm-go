@@ -2,8 +2,8 @@ package references
 
 import "fmt"
 import "jvm-go/ch07/instructions/base"
-import "jvm-go/ch06/rtda"
-import "jvm-go/ch06/rtda/heap"
+import "jvm-go/ch07//rtda"
+import "jvm-go/ch07//rtda/heap"
 
 // Invoke instance method; dispatch based on class
 type INVOKE_VIRTUAL struct{ base.Index16Instruction }

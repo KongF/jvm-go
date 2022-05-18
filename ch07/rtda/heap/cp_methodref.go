@@ -1,6 +1,6 @@
 package heap
 
-import "jvm-go/ch06/classfile"
+import "jvm-go/ch07/classfile"
 
 type MethodRef struct {
 	MemberRef
@@ -21,6 +21,25 @@ func (self *MethodRef) ResolvedMethod() *Method {
 }
 
 func (self *MethodRef) resolveMethodRef() {
-	//class := self.Class()
-	// todo
+	d := self.cp.class
+	c := self.ResolvedClass()
+	if c.IsInterface() {
+		panic("java.lang.IncompatibleChangeError")
+	}
+	method := lookupMethod(c, self.name, self.descriptor)
+	if method == nil {
+		panic("java.lang.NoSuchMethodError")
+	}
+	if !method.isAccessibleTo(d) {
+		panic("java.lang.IllegalAccessError")
+	}
+	self.method = method
+}
+
+func lookupMethod(class *Class, name string, descriptor string) *Method {
+	method := LookupMethodInClass(class, name, descriptor)
+	if method == nil {
+		method = lookupMethodInInterfaces(class.interfaces, name, descriptor)
+	}
+	return method
 }

@@ -10,8 +10,8 @@ import . "jvm-go/ch07/instructions/extended"
 import . "jvm-go/ch07/instructions/loads"
 import . "jvm-go/ch07/instructions/math"
 import . "jvm-go/ch07/instructions/references"
-import . "jvm-go/ch06/instructions/stack"
-import . "jvm-go/ch06/instructions/stores"
+import . "jvm-go/ch07//instructions/stack"
+import . "jvm-go/ch07//instructions/stores"
 
 // NoOperandsInstruction singletons
 var (
