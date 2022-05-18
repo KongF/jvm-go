@@ -1,37 +1,30 @@
 package main
 
 import "fmt"
-import "jvm-go/ch06/rtda/heap"
+import "jvm-go/ch06/classfile"
 import "jvm-go/ch06/instructions"
 import "jvm-go/ch06/instructions/base"
 import "jvm-go/ch06/rtda"
 
-//func interpret(methodInfo *classfile.MemberInfo) {
-//	codeArr := methodInfo.CodeAttribute()
-//	maxLocals := codeArr.MaxLocals()
-//	maxStack := codeArr.MaxStack()
-//	bytecode := codeArr.Code()
-//
-//	thread := rtda.NewThread()
-//	frame := thread.NewFrame(maxLocals, maxStack)
-//	thread.PushFrame(frame)
-//
-//	defer catchErr(frame)
-//	loop(thread, bytecode)
-//}
-func interpret(method *heap.Method) {
+func interpret(methodInfo *classfile.MemberInfo) {
+	codeArr := methodInfo.CodeAttribute()
+	maxLocals := codeArr.MaxLocals()
+	maxStack := codeArr.MaxStack()
+	bytecode := codeArr.Code()
+
 	thread := rtda.NewThread()
-	frame := thread.NewFrame(method)
+	frame := thread.NewFrame(maxLocals, maxStack)
 	thread.PushFrame(frame)
 
 	defer catchErr(frame)
-	loop(thread, method.Code())
+	loop(thread, bytecode)
 }
+
 func catchErr(frame *rtda.Frame) {
 	if r := recover(); r != nil {
-		//fmt.Printf("LocalVars: %v\n", frame.LocalVars())
-		//fmt.Printf("OperandStack:%v\n", frame.OperandStack())
-		//panic(r)
+		fmt.Printf("LocalVars: %v\n", frame.LocalVars())
+		fmt.Printf("OperandStack:%v\n", frame.OperandStack())
+		panic(r)
 	}
 }
 func loop(thread *rtda.Thread, bytecode []byte) {
