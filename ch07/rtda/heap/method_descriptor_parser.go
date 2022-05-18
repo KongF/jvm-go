@@ -6,7 +6,7 @@ type MethodDescriptorParser struct {
 	parsed *MethodDescriptor
 }
 
-func parseMethodDescriptor(descriptor string) interface{} {
+func parseMethodDescriptor(descriptor string) *MethodDescriptor {
 	parser := &MethodDescriptorParser{}
 	return parser.parse(descriptor)
 }
