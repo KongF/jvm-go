@@ -11,6 +11,15 @@ func InitClass(thread *rtda.Thread, class *heap.Class) {
 	initSuperClass(thread, class)
 }
 
+func initSuperClass(thread *rtda.Thread, class *heap.Class) {
+	if !class.IsInterface() {
+		superClass := class.SuperClass()
+		if superClass != nil && !superClass.InitStarted() {
+			InitClass(thread, superClass)
+		}
+	}
+}
+
 func secheduleClinit(thread *rtda.Thread, class *heap.Class) {
 	clinit := class.GetClinitMethod()
 	if clinit != nil {
