@@ -1,8 +1,8 @@
 package references
 
-import "jvm-go/ch07//instructions/base"
-import "jvm-go/ch07//rtda"
-import "jvm-go/ch07//rtda/heap"
+import "jvm-go/ch07/instructions/base"
+import "jvm-go/ch07/rtda"
+import "jvm-go/ch07/rtda/heap"
 
 type NEW struct {
 	base.Index16Instruction

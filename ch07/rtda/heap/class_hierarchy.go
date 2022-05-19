@@ -8,7 +8,7 @@ func (self *Class) isAssignableFrom(other *Class) bool {
 	if !t.IsInterface() {
 		return s.IsSubClassOf(t)
 	} else {
-		return s.isImplements(t)
+		return s.IsImplements(t)
 	}
 }
 func (self *Class) IsSubClassOf(other *Class) bool {

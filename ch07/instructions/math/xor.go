@@ -1,7 +1,7 @@
 package math
 
-import "jvm-go/ch07//instructions/base"
-import "jvm-go/ch07//rtda"
+import "jvm-go/ch07/instructions/base"
+import "jvm-go/ch07/rtda"
 
 // Boolean XOR int
 type IXOR struct{ base.NoOperandsInstruction }

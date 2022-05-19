@@ -1,7 +1,7 @@
 package extended
 
-import "jvm-go/ch07//instructions/base"
-import "jvm-go/ch07//rtda"
+import "jvm-go/ch07/instructions/base"
+import "jvm-go/ch07/rtda"
 
 type GOTO_W struct {
 	offset int

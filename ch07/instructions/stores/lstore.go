@@ -1,7 +1,7 @@
 package stores
 
-import "jvm-go/ch07//instructions/base"
-import "jvm-go/ch07//rtda"
+import "jvm-go/ch07/instructions/base"
+import "jvm-go/ch07/rtda"
 
 type LSTORE struct {
 	base.Index8Instruction

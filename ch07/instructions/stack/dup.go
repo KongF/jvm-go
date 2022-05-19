@@ -1,7 +1,7 @@
 package stack
 
-import "jvm-go/ch07//instructions/base"
-import "jvm-go/ch07//rtda"
+import "jvm-go/ch07/instructions/base"
+import "jvm-go/ch07/rtda"
 
 type DUP struct {
 	base.NoOperandsInstruction

@@ -1,7 +1,7 @@
 package control
 
-import "jvm-go/ch07//instructions/base"
-import "jvm-go/ch07//rtda"
+import "jvm-go/ch07/instructions/base"
+import "jvm-go/ch07/rtda"
 
 type TABLE_SWITCH struct {
 	defaultOffset int32
