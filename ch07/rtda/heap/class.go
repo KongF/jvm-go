@@ -115,3 +115,7 @@ func (self *Class) InitStarted() bool {
 func (self *Class) StartInit() {
 	self.initStarted = true
 }
+
+func (self *Class) GetClinitMethod() *Method {
+	return self.getStaticMethod("<clinit>", "()V")
+}
