@@ -5,11 +5,16 @@ func (self *Class) isAssignableFrom(other *Class) bool {
 	if s == t {
 		return true
 	}
-	if !t.IsInterface() {
-		return s.IsSubClassOf(t)
-	} else {
-		return s.IsImplements(t)
+	if !s.IsArray() {
+		if !s.IsInterface() {
+			if !t.IsInterface() {
+				return s.IsSubClassOf(t)
+			} else {
+				return s.IsImplements(t)
+			}
+		}
 	}
+
 }
 func (self *Class) IsSubClassOf(other *Class) bool {
 	for c := self.superClass; c != nil; c = c.superClass {

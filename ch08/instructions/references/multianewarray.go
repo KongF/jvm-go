@@ -1,8 +1,10 @@
 package references
 
-import "jvm-go/ch08/instructions/base"
-import "jvm-go/ch08/rtda"
-import "jvm-go/ch08/rtda/heap"
+import (
+	"jvm-go/ch08/instructions/base"
+	"jvm-go/ch08/rtda"
+	"jvm-go/ch08/rtda/heap"
+)
 
 type MULTI_ANEW_ARRAY struct {
 	index      uint16
@@ -12,4 +14,37 @@ type MULTI_ANEW_ARRAY struct {
 func (self *MULTI_ANEW_ARRAY) FetchOperands(reader *base.BytecodeReader) {
 	self.index = reader.ReadUint16()
 	self.dimensions = reader.ReadUint8()
+}
+func (self *MULTI_ANEW_ARRAY) Execute(frame *rtda.Frame) {
+	cp := frame.Method().Class().ConstantPool()
+	classRef := cp.GetConstant(uint(self.index)).(*heap.ClassRef)
+	arrClass := classRef.ResolvedClass()
+	stack := frame.OperandStack()
+	counts := popAndChaeckCounts(stack, int(self.dimensions))
+	arr := newMultiDimensionalArray(counts, arrClass)
+	stack.PushRef(arr)
+}
+
+func newMultiDimensionalArray(counts []int32, arrClass *heap.Class) *heap.Object {
+	count := uint(counts[0])
+	arr := arrClass.NewArray(count)
+	if len(counts) > 1 {
+		refs := arr.Refs()
+		for i := range refs {
+			refs[i] = newMultiDimensionalArray(counts[1:], arrClass.ComponentClass())
+		}
+	}
+	return arr
+
+}
+
+func popAndChaeckCounts(stack *rtda.OperandStack, dimensions int) []int32 {
+	counts := make([]int32, dimensions)
+	for i := dimensions - 1; i >= 0; i-- {
+		counts[i] = stack.PopInt()
+		if counts[i] < 0 {
+			panic("java.lang.NegativeArraySizeException")
+		}
+	}
+	return counts
 }
