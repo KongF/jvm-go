@@ -12,6 +12,25 @@ func (self *Class) isAssignableFrom(other *Class) bool {
 			} else {
 				return s.IsImplements(t)
 			}
+		} else {
+			if !t.IsInterface() {
+				return t.isJlObject()
+			} else {
+				return t.isSUperInterfaceOf(s)
+			}
+		}
+	} else {
+		if !t.IsArray() {
+			if !t.IsInterface() {
+				return t.osJlObject()
+			} else {
+				return t.isJlCloneable() || t.isJioSerilizable()
+			}
+		} else {
+			sc := s.ComponentClass()
+			tc := t.ComponentClass()
+			return sc == tc || tc.isAssignableFrom(sc)
+
 		}
 	}
 
