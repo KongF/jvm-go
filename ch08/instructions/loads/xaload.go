@@ -31,14 +31,13 @@ type SALOAD struct {
 
 func (self *IALOAD) Execute(frame *rtda.Frame) {
 	stack := frame.OperandStack()
-	val := stack.PopInt()
 	index := stack.PopInt()
 	arrRef := stack.PopRef()
 
 	checkNotNil(arrRef)
 	ints := arrRef.Ints()
 	checkIndex(len(ints), index)
-	ints[index] = int32(val)
+	stack.PushInt(ints[index])
 }
 func (self *AALOAD) Execute(frame *rtda.Frame) {
 	stack := frame.OperandStack()
