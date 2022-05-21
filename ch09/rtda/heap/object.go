@@ -3,6 +3,7 @@ package heap
 type Object struct {
 	class *Class
 	data  interface{}
+	extra interface{} //记录Object实例的额外信息
 }
 
 func newObject(class *Class) *Object {
@@ -31,4 +32,8 @@ func (self *Object) GetRefVar(name string, descriptor string) *Object {
 	field := self.class.getField(name, descriptor, false)
 	slots := self.data.(Slots)
 	return slots.GetRef(field.slotId)
+}
+
+func (self *Object) Extra() interface{} {
+	return self.extra
 }

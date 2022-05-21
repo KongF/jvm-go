@@ -20,6 +20,7 @@ type Class struct {
 	staticSlotCount   uint
 	staticVars        Slots
 	initStarted       bool
+	jClass            *Object
 }
 
 func newClass(cf *classfile.ClassFile) *Class {
@@ -76,7 +77,9 @@ func (self *Class) NewObject() *Object {
 func (self *Class) GetMainMethod() *Method {
 	return self.getStaticMethod("main", "([Ljava/lang/String;)V")
 }
-
+func (self *Class) JClass() *Object {
+	return self.jClass
+}
 func (self *Class) getStaticMethod(name, descriptor string) *Method {
 	for _, method := range self.methods {
 		if method.IsStatic() &&
@@ -145,4 +148,8 @@ func (self *Class) getField(name string, descriptor string, isStatic bool) *Fiel
 		}
 	}
 	return nil
+}
+
+func (self *Class) JavaName() string {
+	return strings.Replace(self.name, "/", ".", -1)
 }
