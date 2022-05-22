@@ -4,6 +4,7 @@ import "jvm-go/ch09/instructions/base"
 import "jvm-go/ch09/rtda"
 import "jvm-go/ch09/native"
 import _ "jvm-go/ch09/native/java/lang"
+import _ "jvm-go/ch09/native/sun/misc"
 
 type INVOKE_NATIVE struct{ base.NoOperandsInstruction }
 

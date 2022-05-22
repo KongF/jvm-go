@@ -24,7 +24,7 @@ func (self *MethodRef) resolveMethodRef() {
 	d := self.cp.class
 	c := self.ResolvedClass()
 	if c.IsInterface() {
-		panic("java.lang.IncompatibleChangeError")
+		panic("java.lang.IncompatibleClassChangeError")
 	}
 	method := lookupMethod(c, self.name, self.descriptor)
 	if method == nil {

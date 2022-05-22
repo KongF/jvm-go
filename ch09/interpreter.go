@@ -70,5 +70,5 @@ func logInstruction(frame *rtda.Frame, inst base.Instruction) {
 	className := method.Class().Name()
 	methodName := method.Name()
 	pc := frame.Thread().PC()
-	fmt.Printf("%v.%v #%2d %T %v\n", className, methodName, pc, inst, inst)
+	fmt.Printf("%v.%v() #%2d %T %v\n", className, methodName, pc, inst, inst)
 }
