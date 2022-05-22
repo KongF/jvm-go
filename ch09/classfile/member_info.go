@@ -31,7 +31,7 @@ func (self *MemberInfo) AccessFlags() uint16 {
 func (self *MemberInfo) Name() string {
 	return self.cp.getUtf8(self.nameIndex)
 }
-func (self *MemberInfo) Desciptor() string {
+func (self *MemberInfo) Descriptor() string {
 	return self.cp.getUtf8(self.descriptorIndex)
 }
 func (self *MemberInfo) CodeAttribute() *CodeAttribute {

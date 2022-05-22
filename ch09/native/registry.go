@@ -6,10 +6,15 @@ type NativeMethod func(frame *rtda.Frame)
 
 var registry = map[string]NativeMethod{}
 
+func emptyNativeMethod(frame *rtda.Frame) {
+	// do nothing
+}
+
 func Register(className, methodName, methodDescriptor string, method NativeMethod) {
 	key := className + "~" + methodName + "~" + methodDescriptor
 	registry[key] = method
 }
+
 func FindNativeMethod(className, methodName, methodDescriptor string) NativeMethod {
 	key := className + "~" + methodName + "~" + methodDescriptor
 	if method, ok := registry[key]; ok {
@@ -19,7 +24,4 @@ func FindNativeMethod(className, methodName, methodDescriptor string) NativeMeth
 		return emptyNativeMethod
 	}
 	return nil
-}
-func emptyNativeMethod(frame *rtda.Frame) {
-
 }

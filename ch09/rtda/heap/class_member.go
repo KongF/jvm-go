@@ -12,7 +12,7 @@ type ClassMember struct {
 func (self *ClassMember) copyMemberInfo(memberInfo *classfile.MemberInfo) {
 	self.accessFlags = memberInfo.AccessFlags()
 	self.name = memberInfo.Name()
-	self.descriptor = memberInfo.Desciptor()
+	self.descriptor = memberInfo.Descriptor()
 }
 func (self *ClassMember) IsPublic() bool {
 	return 0 != self.accessFlags&ACC_PUBLIC

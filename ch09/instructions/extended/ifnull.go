@@ -18,7 +18,7 @@ func (self *IFNULL) Execute(frame *rtda.Frame) {
 }
 func (self *IFNONNULL) Execute(frame *rtda.Frame) {
 	ref := frame.OperandStack().PopRef()
-	if ref == nil {
+	if ref != nil {
 		base.Branch(frame, self.Offset)
 	}
 }

@@ -17,7 +17,6 @@ func newMethods(class *Class, cfMethods []*classfile.MemberInfo) []*Method {
 	}
 	return methods
 }
-
 func newMethod(class *Class, cfMethod *classfile.MemberInfo) *Method {
 	method := &Method{}
 	method.class = class
@@ -30,6 +29,25 @@ func newMethod(class *Class, cfMethod *classfile.MemberInfo) *Method {
 	}
 	return method
 }
+func (self *Method) injectCodeAttribute(returnType string) {
+	self.maxStack = 4 // todo
+	self.maxLocals = self.argSlotCount
+	switch returnType[0] {
+	case 'V':
+		self.code = []byte{0xfe, 0xb1} // return
+	case 'L', '[':
+		self.code = []byte{0xfe, 0xb0} // areturn
+	case 'D':
+		self.code = []byte{0xfe, 0xaf} // dreturn
+	case 'F':
+		self.code = []byte{0xfe, 0xae} // freturn
+	case 'J':
+		self.code = []byte{0xfe, 0xad} // lreturn
+	default:
+		self.code = []byte{0xfe, 0xac} // ireturn
+	}
+}
+
 func (self *Method) copyAttributes(cfMethod *classfile.MemberInfo) {
 	if codeAttr := cfMethod.CodeAttribute(); codeAttr != nil {
 		self.maxStack = codeAttr.MaxStack()
@@ -71,7 +89,6 @@ func (self *Method) ArgSlotCount() uint {
 }
 
 func (self *Method) calcArgSlotCount(paramTypes []string) {
-	//parsedDescriptor := parseMethodDescriptor(self.descriptor)
 	for _, paramType := range paramTypes {
 		self.argSlotCount++
 		if paramType == "J" || paramType == "D" {
@@ -80,25 +97,5 @@ func (self *Method) calcArgSlotCount(paramTypes []string) {
 	}
 	if !self.IsStatic() {
 		self.argSlotCount++
-	}
-}
-
-func (self *Method) injectCodeAttribute(returnType string) {
-	self.maxStack = 4
-	self.maxLocals = self.argSlotCount
-	switch returnType[0] {
-	case 'V':
-		self.code = []byte{0xfe, 0xb1}
-	case 'D':
-		self.code = []byte{0xfe, 0xaf}
-	case 'F':
-		self.code = []byte{0xfe, 0xae}
-	case 'J':
-		self.code = []byte{0xfe, 0xad}
-	case 'L', '[':
-		self.code = []byte{0xfe, 0xb0}
-	default:
-		self.code = []byte{0xfe, 0xac}
-
 	}
 }

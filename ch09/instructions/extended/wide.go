@@ -19,8 +19,8 @@ func (self *WIDE) FetchOperands(reader *base.BytecodeReader) {
 		inst := &loads.ILOAD{}
 		inst.Index = uint(reader.ReadUint16())
 		self.modifiedInstruction = inst
-	case 0x16: //lload
-		inst := &loads.ILOAD{}
+	case 0x16:
+		inst := &loads.LLOAD{}
 		inst.Index = uint(reader.ReadUint16())
 		self.modifiedInstruction = inst
 	case 0x17: //fload
@@ -58,7 +58,7 @@ func (self *WIDE) FetchOperands(reader *base.BytecodeReader) {
 	case 0x84: //iinc
 		inst := &math.IINC{}
 		inst.Index = uint(reader.ReadUint16())
-		inst.Const = int32(reader.ReadUint16())
+		inst.Const = int32(reader.ReadInt16())
 		self.modifiedInstruction = inst
 	case 0xa9: //ret
 		panic("Unsupported opcode :0xa9!")

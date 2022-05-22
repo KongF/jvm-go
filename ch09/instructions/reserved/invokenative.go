@@ -5,9 +5,7 @@ import "jvm-go/ch09/rtda"
 import "jvm-go/ch09/native"
 import _ "jvm-go/ch09/native/java/lang"
 
-type INVOKE_NATIVE struct {
-	base.NoOperandsInstruction
-}
+type INVOKE_NATIVE struct{ base.NoOperandsInstruction }
 
 func (self *INVOKE_NATIVE) Execute(frame *rtda.Frame) {
 	method := frame.Method()
@@ -18,7 +16,8 @@ func (self *INVOKE_NATIVE) Execute(frame *rtda.Frame) {
 	nativeMethod := native.FindNativeMethod(className, methodName, methodDescriptor)
 	if nativeMethod == nil {
 		methodInfo := className + "." + methodName + methodDescriptor
-		panic("java.lang.UnstatisfiedLinkError: " + methodInfo)
+		panic("java.lang.UnsatisfiedLinkError: " + methodInfo)
 	}
+
 	nativeMethod(frame)
 }

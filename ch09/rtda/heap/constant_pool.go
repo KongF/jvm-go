@@ -48,6 +48,8 @@ func newConstantPool(class *Class, cfCp classfile.ConstantPool) *ConstantPool {
 		case *classfile.ConstantInterfaceMethodrefInfo:
 			methodrefInfo := cpInfo.(*classfile.ConstantInterfaceMethodrefInfo)
 			consts[i] = newInterfaceMethodRef(rtCp, methodrefInfo)
+		default:
+			// todo
 		}
 	}
 	return rtCp
@@ -56,5 +58,5 @@ func (self *ConstantPool) GetConstant(index uint) Constant {
 	if c := self.consts[index]; c != nil {
 		return c
 	}
-	panic(fmt.Sprint("No constants at index %d", index))
+	panic(fmt.Sprintf("No constants at index %d", index))
 }

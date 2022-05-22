@@ -13,7 +13,7 @@ func (self *PUT_STATIC) Execute(frame *rtda.Frame) {
 	currentClass := currentMethod.Class()
 	cp := currentClass.ConstantPool()
 	fieldRef := cp.GetConstant(self.Index).(*heap.FieldRef)
-	field := fieldRef.ResolveField()
+	field := fieldRef.ResolvedField()
 	class := field.Class()
 	if !class.InitStarted() {
 		frame.RevertNextPC()
@@ -21,7 +21,7 @@ func (self *PUT_STATIC) Execute(frame *rtda.Frame) {
 		return
 	}
 	if !field.IsStatic() {
-		panic("java.lang.IncompatibleChangeError")
+		panic("java.lang.IncompatibleClassChangeError")
 	}
 	if field.IsFinal() {
 		if currentClass != class || currentMethod.Name() != "<clinit>" {
@@ -43,6 +43,7 @@ func (self *PUT_STATIC) Execute(frame *rtda.Frame) {
 		slots.SetDouble(slotId, stack.PopDouble())
 	case 'L', '[':
 		slots.SetRef(slotId, stack.PopRef())
-
+	default:
+		// todo
 	}
 }

@@ -19,7 +19,8 @@ func main() {
 }
 func startJVM(cmd *Cmd) {
 	cp := classpath.Parse(cmd.XjreOption, cmd.cpOption)
-	classLoader := heap.NewClassLoader(cp, cmd.verboseInstFlag)
+	classLoader := heap.NewClassLoader(cp, cmd.verboseClassFlag)
+
 	className := strings.Replace(cmd.class, ".", "/", -1)
 	mainClass := classLoader.LoadClass(className)
 	mainMethod := mainClass.GetMainMethod()

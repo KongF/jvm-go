@@ -11,7 +11,7 @@ type GET_STATIC struct {
 func (self *GET_STATIC) Execute(frame *rtda.Frame) {
 	cp := frame.Method().Class().ConstantPool()
 	fieldRef := cp.GetConstant(self.Index).(*heap.FieldRef)
-	field := fieldRef.ResolveField()
+	field := fieldRef.ResolvedField()
 	class := field.Class()
 	if !class.InitStarted() {
 		frame.RevertNextPC()
@@ -36,5 +36,7 @@ func (self *GET_STATIC) Execute(frame *rtda.Frame) {
 		stack.PushDouble(slots.GetDouble(slotId))
 	case 'L', '[':
 		stack.PushRef(slots.GetRef(slotId))
+	default:
+		// todo
 	}
 }

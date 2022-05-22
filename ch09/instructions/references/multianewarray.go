@@ -20,7 +20,7 @@ func (self *MULTI_ANEW_ARRAY) Execute(frame *rtda.Frame) {
 	classRef := cp.GetConstant(uint(self.index)).(*heap.ClassRef)
 	arrClass := classRef.ResolvedClass()
 	stack := frame.OperandStack()
-	counts := popAndChaeckCounts(stack, int(self.dimensions))
+	counts := popAndCheckCounts(stack, int(self.dimensions))
 	arr := newMultiDimensionalArray(counts, arrClass)
 	stack.PushRef(arr)
 }
@@ -38,7 +38,7 @@ func newMultiDimensionalArray(counts []int32, arrClass *heap.Class) *heap.Object
 
 }
 
-func popAndChaeckCounts(stack *rtda.OperandStack, dimensions int) []int32 {
+func popAndCheckCounts(stack *rtda.OperandStack, dimensions int) []int32 {
 	counts := make([]int32, dimensions)
 	for i := dimensions - 1; i >= 0; i-- {
 		counts[i] = stack.PopInt()
