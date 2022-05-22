@@ -93,3 +93,6 @@ func (self *OperandStack) Clear() {
 		self.slots[i].ref = nil
 	}
 }
+func NewOperandStack(maxStack uint) *OperandStack {
+	return newOperandStack(maxStack)
+}

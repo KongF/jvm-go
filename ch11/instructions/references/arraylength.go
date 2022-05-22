@@ -14,7 +14,7 @@ func (self *ARRAY_LENGTH) Execute(frame *rtda.Frame) {
 	arrRef := stack.PopRef()
 
 	if arrRef == nil {
-		panic("java.lang.NullPointerExecption")
+		panic("java.lang.NullPointerException")
 	}
 
 	arrLen := arrRef.ArrayLength()

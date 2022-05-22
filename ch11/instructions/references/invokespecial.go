@@ -10,7 +10,6 @@ import "jvm-go/ch11/rtda"
 // special handling for superclass, private, and instance initialization method invocations
 type INVOKE_SPECIAL struct{ base.Index16Instruction }
 
-// hack!
 func (self *INVOKE_SPECIAL) Execute(frame *rtda.Frame) {
 	currentClass := frame.Method().Class()
 	cp := currentClass.ConstantPool()

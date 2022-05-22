@@ -3,8 +3,13 @@ package reserved
 import "jvm-go/ch11/instructions/base"
 import "jvm-go/ch11/rtda"
 import "jvm-go/ch11/native"
+import _ "jvm-go/ch11/native/java/io"
 import _ "jvm-go/ch11/native/java/lang"
+import _ "jvm-go/ch11/native/java/security"
+import _ "jvm-go/ch11/native/java/util/concurrent/atomic"
+import _ "jvm-go/ch11/native/sun/io"
 import _ "jvm-go/ch11/native/sun/misc"
+import _ "jvm-go/ch11/native/sun/reflect"
 
 type INVOKE_NATIVE struct{ base.NoOperandsInstruction }
 

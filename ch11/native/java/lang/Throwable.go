@@ -1,11 +1,11 @@
 package lang
 
-import (
-	"fmt"
-	"jvm-go/ch11/native"
-	"jvm-go/ch11/rtda"
-	"jvm-go/ch11/rtda/heap"
-)
+import "fmt"
+import "jvm-go/ch11/native"
+import "jvm-go/ch11/rtda"
+import "jvm-go/ch11/rtda/heap"
+
+const jlThrowable = "java/lang/Throwable"
 
 type StackTraceElement struct {
 	fileName   string
@@ -18,9 +18,13 @@ func (self *StackTraceElement) String() string {
 	return fmt.Sprintf("%s.%s(%s:%d)",
 		self.className, self.methodName, self.fileName, self.lineNumber)
 }
+
 func init() {
-	native.Register("java/lang/Throwable", "fillInStackTrace", "(I)Ljava/lang/Throwable;", fillInStackTrace)
+	native.Register(jlThrowable, "fillInStackTrace", "(I)Ljava/lang/Throwable;", fillInStackTrace)
 }
+
+// private native Throwable fillInStackTrace(int dummy);
+// (I)Ljava/lang/Throwable;
 func fillInStackTrace(frame *rtda.Frame) {
 	this := frame.LocalVars().GetThis()
 	frame.OperandStack().PushRef(this)

@@ -1,7 +1,6 @@
 package references
 
 import (
-	"fmt"
 	"jvm-go/ch11/instructions/base"
 	"jvm-go/ch11/rtda/heap"
 )
@@ -10,7 +9,6 @@ import "jvm-go/ch11/rtda"
 // Invoke instance method; dispatch based on class
 type INVOKE_VIRTUAL struct{ base.Index16Instruction }
 
-// hack!
 func (self *INVOKE_VIRTUAL) Execute(frame *rtda.Frame) {
 	currentClass := frame.Method().Class()
 	cp := currentClass.ConstantPool()
@@ -22,10 +20,6 @@ func (self *INVOKE_VIRTUAL) Execute(frame *rtda.Frame) {
 
 	ref := frame.OperandStack().GetRefFromTop(resolvedMethod.ArgSlotCount() - 1)
 	if ref == nil {
-		if methodRef.Name() == "println" {
-			_println(frame.OperandStack(), methodRef.Descriptor())
-			return
-		}
 		panic("java.lang.NullPointerException")
 	}
 
@@ -44,27 +38,4 @@ func (self *INVOKE_VIRTUAL) Execute(frame *rtda.Frame) {
 		panic("java.lang.AbstractMethodError")
 	}
 	base.InvokeMethod(frame, methodToBeInvoked)
-}
-func _println(stack *rtda.OperandStack, descriptor string) {
-	switch descriptor {
-	case "(Z)V":
-		fmt.Printf("%v\n", stack.PopInt() != 0)
-	case "(C)V":
-		fmt.Printf("%c\n", stack.PopInt())
-	case "(I)V", "(B)V", "(S)V":
-		fmt.Printf("%v\n", stack.PopInt())
-	case "(F)V":
-		fmt.Printf("%v\n", stack.PopFloat())
-	case "(J)V":
-		fmt.Printf("%v\n", stack.PopLong())
-	case "(D)V":
-		fmt.Printf("%v\n", stack.PopDouble())
-	case "(Ljava/lang/String;)V":
-		jStr := stack.PopRef()
-		goStr := heap.GoString(jStr)
-		fmt.Println(goStr)
-	default:
-		panic("println: " + descriptor)
-	}
-	stack.PopRef()
 }

@@ -1,9 +1,7 @@
 package lang
 
-import (
-	"jvm-go/ch11/native"
-	"unsafe"
-)
+import "unsafe"
+import "jvm-go/ch11/native"
 import "jvm-go/ch11/rtda"
 
 const jlObject = "java/lang/Object"
@@ -12,6 +10,7 @@ func init() {
 	native.Register(jlObject, "getClass", "()Ljava/lang/Class;", getClass)
 	native.Register(jlObject, "hashCode", "()I", hashCode)
 	native.Register(jlObject, "clone", "()Ljava/lang/Object;", clone)
+	native.Register(jlObject, "notifyAll", "()V", notifyAll)
 }
 
 // public final native Class<?> getClass();
@@ -21,11 +20,17 @@ func getClass(frame *rtda.Frame) {
 	class := this.Class().JClass()
 	frame.OperandStack().PushRef(class)
 }
+
+// public native int hashCode();
+// ()I
 func hashCode(frame *rtda.Frame) {
 	this := frame.LocalVars().GetThis()
 	hash := int32(uintptr(unsafe.Pointer(this)))
 	frame.OperandStack().PushInt(hash)
 }
+
+// protected native Object clone() throws CloneNotSupportedException;
+// ()Ljava/lang/Object;
 func clone(frame *rtda.Frame) {
 	this := frame.LocalVars().GetThis()
 
@@ -35,4 +40,10 @@ func clone(frame *rtda.Frame) {
 	}
 
 	frame.OperandStack().PushRef(this.Clone())
+}
+
+// public final native void notifyAll();
+// ()V
+func notifyAll(frame *rtda.Frame) {
+	// todo
 }

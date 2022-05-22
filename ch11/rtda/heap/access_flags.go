@@ -6,7 +6,7 @@ const (
 	ACC_PROTECTED    = 0x0004 //      field method
 	ACC_STATIC       = 0x0008 //      field method
 	ACC_FINAL        = 0x0010 //class field method
-	ACC_SUPER        = 0x0020 //class field method
+	ACC_SUPER        = 0x0020 // class
 	ACC_SYNCHRONIZED = 0x0020 //            method
 	ACC_VOLATILE     = 0x0040 //      field
 	ACC_BRIDGE       = 0x0040 //            method
