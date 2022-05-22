@@ -30,15 +30,16 @@ func (self *Frame) OperandStack() *OperandStack {
 func (self *Frame) Thread() *Thread {
 	return self.thread
 }
+func (self *Frame) Method() *heap.Method {
+	return self.method
+}
 func (self *Frame) NextPC() int {
 	return self.nextPC
 }
 func (self *Frame) SetNextPC(nextPC int) {
 	self.nextPC = nextPC
 }
-func (self *Frame) Method() *heap.Method {
-	return self.method
-}
+
 func (self *Frame) RevertNextPC() {
 	self.nextPC = self.thread.pc
 }

@@ -3,7 +3,7 @@ package classfile
 import "fmt"
 
 type ClassFile struct {
-	magic        uint32
+	//magic      uint32
 	minorVersion uint16
 	majorVersion uint16
 	constantPool ConstantPool
@@ -98,4 +98,14 @@ func (self *ClassFile) InterfaceNames() []string {
 		interfaceNames[i] = self.constantPool.getClassName(cpIndex)
 	}
 	return interfaceNames
+}
+
+func (self *ClassFile) SourceFileAttribute() *SourceFileAttribute {
+	for _, attrInfo := range self.attributes {
+		switch attrInfo.(type) {
+		case *SourceFileAttribute:
+			return attrInfo.(*SourceFileAttribute)
+		}
+	}
+	return nil
 }

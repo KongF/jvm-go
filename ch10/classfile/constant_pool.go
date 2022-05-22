@@ -1,5 +1,7 @@
 package classfile
 
+import "fmt"
+
 type ConstantPool []ConstantInfo
 
 func readConstantPool(reader *ClassReader) ConstantPool {
@@ -18,7 +20,7 @@ func (self ConstantPool) getConstantInfo(index uint16) ConstantInfo {
 	if cpInfo := self[index]; cpInfo != nil {
 		return cpInfo
 	}
-	panic("Invalid constant pool index!")
+	panic(fmt.Errorf("Invalid constant pool index: %v!", index))
 }
 func (self ConstantPool) getNameAndType(index uint16) (string, string) {
 	ntInfo := self.getConstantInfo(index).(*ConstantNameAndTypeInfo)

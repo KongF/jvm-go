@@ -22,22 +22,6 @@ func (self *ATHROW) Execute(frame *rtda.Frame) {
 	}
 }
 
-func handleUncaughtException(thread *rtda.Thread, ex *heap.Object) {
-	thread.ClearStack()
-
-	jMsg := ex.GetRefVar("detailMessage", "Ljava/lang/String;")
-	goMsg := heap.GoString(jMsg)
-	println(ex.Class().JavaName() + ": " + goMsg)
-
-	stes := reflect.ValueOf(ex.Extra())
-	for i := 0; i < stes.Len(); i++ {
-		ste := stes.Index(i).Interface().(interface {
-			String() string
-		})
-		println("\tat " + ste.String())
-	}
-}
-
 func findAndGotoExceptionHandler(thread *rtda.Thread, ex *heap.Object) bool {
 	for {
 		frame := thread.CurrentFrame()
@@ -57,4 +41,21 @@ func findAndGotoExceptionHandler(thread *rtda.Thread, ex *heap.Object) bool {
 		}
 	}
 	return false
+}
+
+// todo
+func handleUncaughtException(thread *rtda.Thread, ex *heap.Object) {
+	thread.ClearStack()
+
+	jMsg := ex.GetRefVar("detailMessage", "Ljava/lang/String;")
+	goMsg := heap.GoString(jMsg)
+	println(ex.Class().JavaName() + ": " + goMsg)
+
+	stes := reflect.ValueOf(ex.Extra())
+	for i := 0; i < stes.Len(); i++ {
+		ste := stes.Index(i).Interface().(interface {
+			String() string
+		})
+		println("\tat " + ste.String())
+	}
 }

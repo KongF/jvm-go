@@ -9,3 +9,7 @@ type UnparsedAttribute struct {
 func (self *UnparsedAttribute) readInfo(reader *ClassReader) {
 	self.info = reader.readBytes(self.length)
 }
+
+func (self *UnparsedAttribute) Info() []byte {
+	return self.info
+}
